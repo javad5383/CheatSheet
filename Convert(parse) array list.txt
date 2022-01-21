@@ -1,0 +1,1 @@
+var intIds = Array.ConvertAll(cartCookieString, int.Parse).ToList();
