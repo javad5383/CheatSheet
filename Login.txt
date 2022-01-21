@@ -31,3 +31,19 @@
             await HttpContext.SignInAsync(principal, properties);
             return Redirect("/");
         }
+
+//app seting .net6
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+}).AddCookie(options =>
+{
+    options.LoginPath = "/Account";
+    options.LogoutPath = "/Account";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+
+
+});
