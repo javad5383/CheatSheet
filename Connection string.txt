@@ -1,0 +1,10 @@
+program
+
+builder.Services.AddDbContext<PwaContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PWAConnection"));
+});
+
+appsetting.json:
+"ConnectionStrings": {
+    "PWAConnection": " Data Source =.;Initial Catalog=PWA_DB;Integrated Security=true"
