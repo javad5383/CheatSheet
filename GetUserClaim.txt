@@ -1,0 +1,1 @@
+ var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
