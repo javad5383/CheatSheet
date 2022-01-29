@@ -1,0 +1,38 @@
+
+            var claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                    new Claim(ClaimTypes.Email,user.Email),
+                    new Claim(ClaimTypes.MobilePhone,user.PhoneNumber)
+                    //new Claim("IsAdmin", user.IsAdmin.ToString())
+                };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            var properties = new AuthenticationProperties
+            {
+                IsPersistent = userInput.RememberMe
+            };
+
+
+            await HttpContext.SignInAsync(principal, properties);
+
+
+            return Redirect("/");
+///////////////////////////////////////////////////////////////////////////
+program.cs
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+}).AddCookie(options =>
+{
+    options.LoginPath = "/Account";
+    options.LogoutPath = "/Account/Logout";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+
+
+});
