@@ -1,0 +1,4 @@
+var randomSkip = new Random();
+ var rand = randomSkip.Next(maxNumber);
+or
+var rand= randomSkip.Next(minNumber , maxNumber);
