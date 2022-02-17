@@ -1,0 +1,9 @@
+@section scripts {
+
+    <script>
+
+      alert('foo');
+
+    </script>
+
+}
